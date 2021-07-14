@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Microservices Projects | freeCodeCamp.org</title>
+      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="style.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <body>
+    <h1>Timestamp Microservice</h1>
+    <hr />
+    <div class="container">
+      <h3>Example Usage:</h3>
+      <ul>
+        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
+        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
+      </ul>
+
+      <h3>Example Output:</h3>
+      <p>
+        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>
+        Project for <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/timestamp-microservice">freeCodeCamp.org</a>
+      </p>
+    </div>
+    
+    <hr />
+
+    <h1>Request Header Parser Microservice</h1>
+    <hr />
+    <div class="container">
+      <h3>Example Usage:</h3>
+      <ul>
+        <li><a href="api/whoami">[project url]/api/whoami</a></li>
+      </ul>
+
+      <h3>Example Output:</h3>
+      <p>
+        <code>
+          {"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5",
+"software":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"}
+        </code>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>
+        Project for <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/request-header-parser-microservice">freeCodeCamp.org</a>
+      </p>
+    </div>
+
+    <hr />
+
+    <h1>URL Shortener Microservice</h1>
+    <hr />
+    <div class="container">
+      <h3>Expample Usage:</h3>
+      <form method="POST" action="api/shorturl">
+        <label for="url">Full URL</label>
+        <input type="text" name="url" placeholder="Full URL" required>
+        <button type="submit">Save</button>
+        <button type="reset">Reset</button>
+      </form>
+      <h3>Or view all currently registered short urls:</h3>
+      <ul>
+        <li>
+          <a href="api/shorturl">[project url]/api/shorturl</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p>
+        Project for <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice">freeCodeCamp.org</a>
+      </p>
+    </div>
+    
+    <hr />
+    
+    <h1>Exercise Tracker Microservice</h1>
+    <hr />
+    <div class="container">
+
+      <h3>View all currently registered users</h3>
+      <ul>
+        <li>
+          <a href="api/users">[project_url]/api/users</a>
+        </li>
+      </ul>
+
+      <h3>Create User:</h3>
+      <form method="POST" action="api/users">
+        <label for="username">Username</label>
+        <input type="text" id="username" required name="username" placeholder="Username">
+        <button type="submit">Save</button>
+        <button type="reset">Reset</button>
+      </form>
+
+      <h3>Create Exercise:</h3>
+      <form method="POST" id="exercise-form" action='/api/users/id'>
+        <label for="_id">ID:</label>
+        <input id="_id" name="_id" type="text" required placeholder=":_id">
+        
+        <br>
+        <label for="description">Description:</label>
+        <input id="description" name="description" type="text" required placeholder="description">
+
+        <br>
+        <label for="duration">Duration:</label>
+        <input id="duration" name="duration" type="number" step="1" required placeholder="duration (mins.)">
+
+        <label for="date">Date:</label>
+        <input id="date" name="date" type="date" placeholder="Date">
+
+        <br>
+        <button type="submit">Save</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+
+
+    <div class="footer">
+      <p>
+        Project for <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/exercise-tracker">freeCodeCamp.org</a>
+      </p>
+    </div>
+
+
+    <hr />
+
+    <h1>File Metadata Microservice</h1>
+
+    <div class="container">
+      <h3>Usage:</h3>
+      <p>Please Upload a File...<p>
+     <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+        <input type="file" name="upfile">
+        <br>
+        <button type="submit">Upload</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+
+    <div class="footer">
+      <p>
+        Project for <a href="https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/file-metadata-microservice">freeCodeCamp.org</a>
+      </p>
+    </div>
+
+    <script>
+      "use strict"
+      function onLoad() {
+        const exerciseForm = document.getElementById('exercise-form');
+        exerciseForm.addEventListener('submit', () => {
+          const _id = document.getElementById("_id").value;
+          exerciseForm.action = `api/users/${_id}/exercises`;
+          exerciseForm.submit();
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', onLoad);
+    </script>
+  </body>
+</html>
